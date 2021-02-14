@@ -10,7 +10,7 @@ Dieses Repo beinhaltet den R-Code und die damit erzeugten Zeitreihendaten zur Me
 
 Ziel des R-Codes ist es primär folgende Abbildung tagesaktuell zu erstellen: 
 
-![Zeitliche Distanzen der österreichischen Bundesländer bis zum Erreichen einer Impfquote von 70 %](/___readme_images/2021-02-09_warpspeed.png)
+![Zeitliche Distanzen der österreichischen Bundesländer bis zum Erreichen einer Impfquote von 70 %](/Output/2021-02-14_warpspeed.png)
 
 Auf dem Weg dahin werden die im Ordner "Data" abgelegten Zeitreihendaten ermittelt.
 
