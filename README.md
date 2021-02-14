@@ -8,7 +8,9 @@ Dieses Repo beinhaltet den R-Code und die damit erzeugten Zeitreihendaten zur Me
 
 ## ... und was dabei herauskommt
 
-Ziel des R-Codes ist es primär folgende Abbildung tagesaktuell zu erstellen: 
+Ziel des R-Codes ist es, folgende zwei Abbildung tagesaktuell zu erstellen: 
+
+![Anteil der Vollimmunisierten je Bundesland](/Output/immunquote/2021-02-14_immunquote.png)
 
 ![Zeitliche Distanzen der österreichischen Bundesländer bis zum Erreichen einer Impfquote von 70 %](/Output/2021-02-14_warpspeed.png)
 
