@@ -8,7 +8,7 @@ Dieses Repo beinhaltet den R-Code und die damit erzeugten Zeitreihendaten zur Me
 
 ## ... und was dabei herauskommt
 
-Ziel des R-Codes ist es, folgende zwei Abbildung tagesaktuell zu erstellen: 
+Ziel des R-Codes ist es, folgende zwei Abbildung tagesaktuell zu erstellen:
 
 ![Anteil der Vollimmunisierten je Bundesland](/Output/immunquote/2021-02-14_immunquote.png)
 
@@ -24,4 +24,8 @@ Eine kurze Vorstellung des R-Codes folgt in Kürze.
 
 ## Die damit erzeugten Zeitreihendaten
 
-Ausgangspunkt für die Diagrammerstellung sind die Daten des des [BMSGPKs](https://www.sozialministerium.at) zum [„Zeitverlauf der COVID19-Impfungen in Österreich“](https://www.data.gv.at/katalog/dataset/zeitverlauf-der-covid19-impfungen-in-osterreich-national-und-bundeslander), welche dankenswerterweise unter einer CC BY Lizensierung zur Verfügung gestellt werden. Eine kurze Vorstellung der daraus abgeleiteten Zeitreihendaten folgt in Kürze.
+Ausgangspunkt für die Diagrammerstellung sind die Daten des des [BMSGPKs](https://www.sozialministerium.at) zum [„Zeitverlauf der COVID19-Impfungen in Österreich"](https://www.data.gv.at/katalog/dataset/zeitverlauf-der-covid19-impfungen-in-osterreich-national-und-bundeslander), welche dankenswerterweise unter einer CC BY Lizensierung zur Verfügung gestellt werden. Eine kurze Vorstellung der daraus abgeleiteten Zeitreihendaten (vgl. Ordner ["Data"](https://github.com/donkoralle/warpspeed/tree/main/Data)) folgt in Kürze.
+
+## Die damit erzeugten Abbildungen
+
+... finden sich im Ordner ["Output"](https://github.com/donkoralle/warpspeed/tree/main/Output). Toplevel liegen die Abbildungen zu den zeitlichen Distanzen, im Unterordner ["immunquote"](https://github.com/donkoralle/warpspeed/tree/main/Output/immunquote) werden die Abbildungen zu den Anteilen der Vollimmunisierten abgelegt.
