@@ -18,7 +18,7 @@ Auf dem Weg dahin werden die im Ordner "Data" abgelegten Zeitreihendaten ermitte
 
 Laufend aktualisierte Fassungen dieser Abbildung poste ich unter den Tags #österreichimpft #warpseed auf [Twitter](https://twitter.com/search?q=österreichimpft%20warpspeed).
 
-## Der R-Code zur Diagrammerstellung
+## Der R-Code
 
 Eine kurze Vorstellung des R-Codes folgt in Kürze.
 
