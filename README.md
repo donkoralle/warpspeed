@@ -23,7 +23,7 @@ Laufend aktualisierte Fassungen dieser Abbildung poste ich unter den Tags #öste
 Zur Erstellung der Abbildungen werden drei Blöcke durchlaufen:
 
 * **Block 1: Datenabfrage**  
-Die vom BMSGPK angebotenen Daten werden abgerufen, aufbereitet und lokal in einer SQLite Datenbank (Table "timeline") abgelegt.
+Die vom BMSGPK angebotenen Daten werden abgerufen, aufbereitet und lokal in einer SQLite Datenbank (Ordner ["Data"](https://github.com/donkoralle/warpspeed/tree/main/Data), git_impfen_v1.db, Table "timeline") abgelegt.
 * **Block 2: Neue Variablen berechnen und ablegen**  
 Ausgehend von den abgefragten Daten werden folgende Variablen berechnet:
   + Datum_minus7Datum_minus7: Bezugsdatum minus sieben Tage
@@ -42,7 +42,7 @@ Die im Block 2 erstellten Daten werden danach graphisch dargestellt und als PNG-
 ## Die damit erzeugten Zeitreihendaten
 
 Ausgangspunkt für die Diagrammerstellung sind die Daten des des [BMSGPKs](https://www.sozialministerium.at) zum [„Zeitverlauf der COVID19-Impfungen in Österreich"](https://www.data.gv.at/katalog/dataset/zeitverlauf-der-covid19-impfungen-in-osterreich-national-und-bundeslander), welche dankenswerterweise unter einer CC BY Lizenzierung zur Verfügung gestellt werden.
-Die vom BMSGPK abgefragten Daten werden in einer lokalen SQLite Datenbank (Table "timeline") abgelegt. Die Datenbank findet sich im Ordner ["Data"](https://github.com/donkoralle/warpspeed/tree/main/Data). Die auf diesen Daten aufbauenden Berechnungen werden im Table "timeline_extrapol" abgelegt. Dieser Table wird bei jeder Aktualisierung auch als CSV-Datei im Ordner "Data" abgelegt.
+Die vom BMSGPK abgefragten Daten werden in einer lokalen SQLite Datenbank (Table "timeline") abgelegt. Die Datenbank findet sich im Ordner ["Data"](https://github.com/donkoralle/warpspeed/tree/main/Data). Die auf diesen Daten aufbauenden Berechnungen werden im Table "timeline_extrapol" abgelegt. Dieser Table wird bei jeder Aktualisierung auch als CSV-Datei im Ordner ["Data"](https://github.com/donkoralle/warpspeed/tree/main/Data) abgelegt.
 
 ## Die damit erzeugten Abbildungen
 
