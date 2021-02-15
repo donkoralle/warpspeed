@@ -34,6 +34,7 @@ Ausgehend von den abgefragten Daten werden folgende Variablen berechnet:
   + dauerDeltaNonimmBev: Dauer in Tagen zur Vollimmunisierung von DeltaNonImmBev
   + TagErreichenImmunquote: Bezugsdatum plus dauerDeltaNonimmBev
   + ImpfquoteAct: Anteil der Vollimmunisierten an der Bevölkerung zum Bezugsdatum
+  
   Die berechneten Variablen werden im Table "timeline_extrapol" sowie als CSV-Datei lokal abgelegt.
 * **Block 3: Visualisierung**  
 Die im Block 2 erstellten Daten werden danach graphisch dargestellt und als PNG-Dateien im Ordner "Output" lokal abgelegt.
