@@ -22,7 +22,7 @@ ausgangsjahr <- 2021
 # Anzahl der Tage in Diagramm 1 & 2
 myTimewindow <- 14
 Immunisierungsquote <- 0.7
-myDB <- "Data/git_impfen_v1.db"
+myDB <- "Data/git_impfen_v2.db"
 
 # Pfade zu den Output-Files setzen
 myCSVexportFile <- "Data/timeline_extrapol.csv"
@@ -36,10 +36,12 @@ myDia2Path <- "Output/"
 
 # https://info.gesundheitsministerium.at/opendata.html
 # Aktualisierung: Die Aktualisierung erfolgt täglich gegen 14 Uhr (Stand 05.02.21 - https://www.data.gv.at/katalog/dataset/589132b2-c000-4c60-85b4-c5036cdf3406)
+# Update 26.02.21: neuer Datensatz des Gesundheitsministeriums ist:
+# https://info.gesundheitsministerium.gv.at/data/timeline-eimpfpass.csv
 
 print("\n### Daten abrufen ... ###\n")
 
-direktImport <- as_tibble(read.csv2("https://info.gesundheitsministerium.at/data/timeline.csv",
+direktImport <- as_tibble(read.csv2("https://info.gesundheitsministerium.gv.at/data/timeline-eimpfpass.csv",
                                     encoding = "UTF-8",
                                     dec = "."))
 
@@ -52,16 +54,20 @@ if(any(grepl("X.U.FEFF.", colnames(direktImport)))){
     rename(., Datum = X.U.FEFF.Datum)
 }
 
+# Update 26.02.21: Datenstruktur muss nachgebessert werden
+conn <- dbConnect(SQLite(), myDB)
+# Spaltennamen aus lokaler DB abrufen
+cols2select <- dbListFields(conn, "timeline")
+direktImport <- direktImport %>%
+  select(all_of(cols2select))
+
 # Datum in Date umwandeln
 direktImport <- direktImport %>%
   mutate(Datum = as.Date(Datum))
-glimpse(direktImport)
+# glimpse(direktImport)
 
 
 # ==== Db-Verbindung erstellen ====
-
-# Vebindung erstellen
-conn <- dbConnect(SQLite(), myDB)
 
 # max. Datum aus DB abfragen
 max.DBdatum <- dbGetQuery(conn, "SELECT MAX(Datum) FROM timeline")[1,1]
@@ -123,11 +129,12 @@ if(TriggerLocalUpdate){
   max.DBdatumMinus14plus6 <- as.Date(max.DBdatum)-(myTimewindow+6)
   
   # SQL-Statement zur Datenabfrage basteln
+  # Update 26.02.21: BundeslandID 0 = "keine Zuordnung" ausfiltern
   sql_1 <- paste("SELECT * FROM timeline WHERE Datum BETWEEN date('", 
                  max.DBdatumMinus14plus6, 
                  "') and date('", 
                  max.DBdatum, 
-                 "') AND BundeslandID < 10 ORDER BY Datum, BundeslandID",
+                 "') AND BundeslandID < 10 AND BundeslandID > 0 ORDER BY Datum, BundeslandID",
                  sep = "")
 
   # DB-Daten abfragen & on-entry-Datumskonversion & Konversion bula
