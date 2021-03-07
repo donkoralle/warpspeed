@@ -169,7 +169,10 @@ if(TriggerLocalUpdate){
   # sicherheitshalber: Es könnten Divisionen durch 0 aufgetreten sein (v.a. am Beginn der Zeitreihe) > Inf durch NA ersetzen
   sel.daten <- sel.daten %>% 
     mutate_if(is.numeric, list(~na_if(., Inf))) %>% 
-    mutate_if(is.numeric, list(~na_if(., -Inf)))
+    mutate_if(is.numeric, list(~na_if(., -Inf))) %>%
+    # RÜckläufige Entwicklung der Immunisierten abfagen und als NA setzen
+    mutate(dauerDeltaNonimmBev = replace(dauerDeltaNonimmBev, dauerDeltaNonimmBev < 0, NA)) %>%
+    mutate(TagErreichenImmunquote = replace(TagErreichenImmunquote, TagErreichenImmunquote < "2021-01-01", NA))
   
   
   # ==== Indikatoren in lokaler DB & als CSV ablegen  ====
