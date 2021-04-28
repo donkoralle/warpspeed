@@ -5,6 +5,7 @@
 # Hinweise:
 # * Code wurde auf einem Win10-System mit R version 4.0.3 (2020-10-10) -- "Bunny-Wunnies Freak Out" erstellt
 # * Code wurde für einen Aufruf über die Windows-Eingabeaufforderung & Rscript.exe ausgelegt (v.a. print), um das tägliche Ausführen zu erleichtern 
+# 28.04.21: Änderung des Hinweistextes zur Einmeldequote im e-Impfpass: Übernahme der Formulierung von https://www.data.gv.at/katalog/dataset/4312623f-2cdc-4a59-bea5-877310e6e48d
 
 
 # ==== Let's roll ====
@@ -221,7 +222,7 @@ if(TriggerLocalUpdate){
   myCaption <- paste("Stand: ",
                      max.DBdatum,
                      "\nDatenquelle: BMSGPK, Österreichisches COVID-19 Open Data Informationsportal (https://www.data.gv.at/covid-19)",
-                     "\nDerzeit sind ca. 90 % aller Impfungen (und damit auch der Immunisierten) im E-Impfpass erfasst.",
+                     "\nDie Einmeldequote in den e-Impfpass beträgt aktuell noch nicht 100%.",
                      sep = "")
   yLabel <- "Anteil Vollimmunisierte [%]\n"
   # Y-Achse auf 2.5%
@@ -280,7 +281,7 @@ if(TriggerLocalUpdate){
   myCaption <- paste("Stand: ",
                      max.DBdatum,
                      "\nDatenquelle: BMSGPK, Österreichisches COVID-19 Open Data Informationsportal (https://www.data.gv.at/covid-19)",
-                     "\nDerzeit sind ca. 90 % aller Impfungen (und damit auch der Immunisierten) im E-Impfpass erfasst.",
+                     "\nDie Einmeldequote in den e-Impfpass beträgt aktuell noch nicht 100%.",
                      sep = "")
   yLabel <- paste("Impfquote (",
                   Immunisierungsquote*100,
