@@ -6,6 +6,7 @@
 # * Code wurde auf einem Win10-System mit R version 4.0.3 (2020-10-10) -- "Bunny-Wunnies Freak Out" erstellt
 # * Code wurde für einen Aufruf über die Windows-Eingabeaufforderung & Rscript.exe ausgelegt (v.a. print), um das tägliche Ausführen zu erleichtern 
 # 28.04.21: Änderung des Hinweistextes zur Einmeldequote im e-Impfpass: Übernahme der Formulierung von https://www.data.gv.at/katalog/dataset/4312623f-2cdc-4a59-bea5-877310e6e48d
+# 31.05.21: Änderung Output-Device auf "cairo" um bei Abbildungen Antialiasing zu verbessern
 
 
 # ==== Let's roll ====
@@ -267,7 +268,8 @@ if(TriggerLocalUpdate){
                       sep = "")
   ggsave(myFilename, 
          width = 8, height = 5, 
-         dpi = 200, units = "in")  
+         dpi = 200, units = "in",
+         type = "cairo")  
   
   print("\n### Diagramm 1 gespeichert ###\n")  
   
@@ -354,7 +356,8 @@ if(TriggerLocalUpdate){
                       sep = "")
   ggsave(myFilename, 
          width = 8, height = 5, 
-         dpi = 200, units = "in")  
+         dpi = 200, units = "in",
+         type = "cairo")  
   
   print("\n### Diagramm 2 gespeichert ###\n")
   
