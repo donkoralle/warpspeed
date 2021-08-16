@@ -7,13 +7,14 @@
 # * Code wurde für einen Aufruf über die Windows-Eingabeaufforderung & Rscript.exe ausgelegt (v.a. print), um das tägliche Ausführen zu erleichtern 
 # 28.04.21: Änderung des Hinweistextes zur Einmeldequote im e-Impfpass: Übernahme der Formulierung von https://www.data.gv.at/katalog/dataset/4312623f-2cdc-4a59-bea5-877310e6e48d
 # 31.05.21: Änderung Output-Device auf "cairo" um bei Abbildungen Antialiasing zu verbessern
+# 16.08.21: Geänderte Einbindung der System-Fonts (jetzt mit showtext), da extrafont 1.3.9 nicht mehr zuverlässig funktioniert
 
 
 # ==== Let's roll ====
 
 library(tidyverse)
 library(scales)
-library(extrafont)
+library(showtext)
 library(RColorBrewer)
 library(RSQLite)
 library(lubridate)
@@ -215,6 +216,12 @@ if(TriggerLocalUpdate){
   vis.daten1 <- sel.daten %>%
     filter(Datum > maxVisDatum)
   
+  # Schriftart Calibri laden (Annahme: Win-System):
+  font_add("calibri", regular = "calibri.ttf", 
+           bold = "calibrib.ttf", 
+           italic = "calibrii.ttf")
+  showtext_auto()
+  
   
   # ==== Visualisieren Diagramm 1: Impfquoten aktuell ====
   
@@ -238,17 +245,17 @@ if(TriggerLocalUpdate){
          subtitle = mySubTitle,
          caption = myCaption) +
     theme_gray() +
-    theme(text = element_text(size=12, family="Calibri"),
-          legend.text = element_text(size=10),
-          legend.title = element_text(size=10, face = "bold"),
+    theme(text = element_text(size=24, family="calibri"),
+          # legend.text = element_text(size=14),
+          legend.title = element_text(face = "bold", margin=margin(0,0,-7,0)),
           legend.key.size = unit(1, 'lines'),
-          plot.title = element_text(size=14, hjust = 0.5, face= "bold",
+          plot.title = element_text(hjust = 0.5, face= "bold",
                                     margin=margin(7,0,10,0)),
           plot.subtitle = element_text(hjust = 0.5,
                                        margin=margin(5,0,10,0)),
-          plot.caption = element_text(size=7, hjust = 0, face= "italic",
+          plot.caption = element_text(lineheight = 0.5, size=11, hjust = 0, face= "italic",
                                       margin=margin(14,0,0,0)),
-          axis.title = element_text(face = "bold"),
+          axis.title = element_text(lineheight = 0.5, face = "bold"),
           axis.text.x = element_text(angle = 90, vjust = 0.5),
           axis.ticks.length=unit(.15, "cm"),
           panel.border = element_rect(color = "black", fill = NA),
@@ -260,7 +267,7 @@ if(TriggerLocalUpdate){
                                                        decimal.mark = ","),
                        limits = c(0, myMaxY)) +
     coord_cartesian(xlim = c(min(vis.daten1$Datum), max(vis.daten1$Datum)))
-
+  
   # Diagramm 1 speichern
   myFilename <- paste(myDia1Path, 
                       max.DBdatum, 
@@ -318,17 +325,15 @@ if(TriggerLocalUpdate){
          subtitle = mySubTitle,
          caption = myCaption) +
     theme_gray() +
-    theme(text = element_text(size=12, family="Calibri"),
-          legend.text = element_text(size=10),
-          legend.title = element_text(size=10, face = "bold"),
+    theme(text = element_text(size=24, family="calibri"),
+          # legend.text = element_text(size=14),
+          legend.title = element_text(face = "bold", margin=margin(0,0,-7,0)),
           legend.key.size = unit(1, 'lines'),
-          plot.title = element_text(size=14, hjust = 0.5, face= "bold",
-                                    margin=margin(7,0,0,0)),
-          plot.subtitle = element_text(hjust = 0.5,
-                                    margin=margin(5,0,10,0)),
-          plot.caption = element_text(size=7, hjust = 0, face= "italic",
+          plot.title = element_text(hjust = 0.5, face= "bold", margin=margin(7,0,7,0)),
+          plot.subtitle = element_text(hjust = 0.5, margin=margin(0,0,7,0)),
+          plot.caption = element_text(lineheight = 0.5, size=11, hjust = 0, face= "italic",
                                       margin=margin(14,0,0,0)),
-          axis.title = element_text(face = "bold"),
+          axis.title = element_text(lineheight = 0.5, face = "bold"),
           axis.text.x = element_text(angle = 90, vjust = 0.5),
           axis.ticks.length=unit(.15, "cm"),
           panel.border = element_rect(color = "black", fill = NA),
@@ -347,7 +352,6 @@ if(TriggerLocalUpdate){
                       values=alpha(c("red","red"), c(0.1, 0.3))) +
     coord_cartesian(ylim = c(myVisYmin, myVisYmax),
                     xlim = c(min(vis.daten1$Datum), max(vis.daten1$Datum)))
-  
   
   # ==== Diagramm speichern ====
   myFilename <- paste(myDia2Path, 
