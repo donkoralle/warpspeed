@@ -41,7 +41,7 @@ Die im Block 2 erstellten Daten werden danach graphisch dargestellt und als PNG-
 
 ## Die damit erzeugten Zeitreihendaten
 
-Ausgangspunkt für die Diagrammerstellung sind die Daten des des [BMSGPKs](https://www.sozialministerium.at) zum [„Zeitverlauf der COVID19-Impfungen in Österreich"](https://www.data.gv.at/katalog/dataset/zeitverlauf-der-covid19-impfungen-in-osterreich-national-und-bundeslander), welche dankenswerterweise unter einer CC BY Lizenzierung zur Verfügung gestellt werden.
+Ausgangspunkt für die Diagrammerstellung sind die Daten des des [BMSGPKs](https://www.sozialministerium.at) zum [„Zeitverlauf der COVID19-Impfungen in Österreich"](https://www.data.gv.at/katalog/dataset/4312623f-2cdc-4a59-bea5-877310e6e48d), welche dankenswerterweise unter einer CC BY Lizenzierung zur Verfügung gestellt werden.
 Die vom BMSGPK abgefragten Daten werden in einer lokalen SQLite Datenbank (Table "timeline") abgelegt. Die Datenbank findet sich im Ordner ["Data"](https://github.com/donkoralle/warpspeed/tree/main/Data). Die auf diesen Daten aufbauenden Berechnungen werden im Table "timeline_extrapol" abgelegt. Dieser Table wird bei jeder Aktualisierung auch als CSV-Datei im Ordner ["Data"](https://github.com/donkoralle/warpspeed/tree/main/Data) abgelegt.
 
 ## Die damit erzeugten Abbildungen
